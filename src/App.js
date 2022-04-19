@@ -1,10 +1,12 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "./context/theme-context";
 
 function App() {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [showHint, setShowHint] = useState(false);
+  const theme = useContext(ThemeContext);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -19,7 +21,12 @@ function App() {
     <>
       <div>
         <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
+        <button
+          style={{ background: theme.background, color: theme.foreground }}
+          onClick={() => setCount(count + 1)}
+        >
+          Click me
+        </button>
       </div>
       <div>
         <input type="text" onChange={handleChange} />
