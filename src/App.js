@@ -1,12 +1,16 @@
 import "./App.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import { ThemeContext } from "./context/theme-context";
+import countReducer from "./reducer/count-reducer";
+
+const initialState = { count: 0 };
 
 function App() {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [showHint, setShowHint] = useState(false);
   const theme = useContext(ThemeContext);
+  const [state, dispatch] = useReducer(countReducer, initialState);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -35,6 +39,12 @@ function App() {
         ) : (
           <p>input value is {inputValue}</p>
         )}
+      </div>
+      <div>
+        <p>implement counter with useReducer</p>
+        <p>You clicked {state.count} times</p>
+        <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+        <button onClick={() => dispatch({ type: "increment" })}>+</button>
       </div>
     </>
   );
