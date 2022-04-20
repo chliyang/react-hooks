@@ -1,36 +1,24 @@
 import "./App.css";
-import React, {
-  useContext,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useReducer } from "react";
+import useApp from "./hooks/use-app";
 import { ThemeContext } from "./context/theme-context";
 import countReducer from "./reducer/count-reducer";
 
 const initialState = { count: 0 };
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [inputValue, setInputValue] = useState("");
-  const [showHint, setShowHint] = useState(false);
   const theme = useContext(ThemeContext);
   const [state, dispatch] = useReducer(countReducer, initialState);
-  const inputRef = useRef();
 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const focusOn = () => {
-    inputRef.current.focus();
-  };
-
-  useEffect(() => {
-    if (inputValue.length > 8) setShowHint(true);
-    if (inputValue.length <= 8) setShowHint(false);
-  }, [inputValue]);
+  const {
+    count,
+    setCount,
+    showHint,
+    inputValue,
+    inputRef,
+    handleChange,
+    focusOn,
+  } = useApp();
 
   return (
     <>
