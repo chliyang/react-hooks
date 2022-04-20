@@ -1,5 +1,11 @@
 import "./App.css";
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 import { ThemeContext } from "./context/theme-context";
 import countReducer from "./reducer/count-reducer";
 
@@ -11,9 +17,14 @@ function App() {
   const [showHint, setShowHint] = useState(false);
   const theme = useContext(ThemeContext);
   const [state, dispatch] = useReducer(countReducer, initialState);
+  const inputRef = useRef();
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
+  };
+
+  const focusOn = () => {
+    inputRef.current.focus();
   };
 
   useEffect(() => {
@@ -33,7 +44,8 @@ function App() {
         </button>
       </div>
       <div>
-        <input type="text" onChange={handleChange} />
+        <input type="text" ref={inputRef} onChange={handleChange} />
+        <button onClick={focusOn}>Focus on input</button>
         {showHint ? (
           <p>sorry, input length cannot greater than 8.</p>
         ) : (
