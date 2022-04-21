@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -8,7 +7,64 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-div {
-  margin-top: 20px;
-  margin-bottom: 40px;
+.container {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.next_one {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.judgement {
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.chessboard {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 84px 84px 84px;
+  grid-template-rows: 84px 84px 84px;
+  margin: 50px;
+  border: 1px solid darkgray;
+}
+
+.square {
+  font-size: 70px;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  border: 2px solid darkgray;
+}
+
+.square:hover {
+  background-color: lightgray;
+}
+
+.square:active {
+  background-color: darkgray;
+}
+
+button {
+  width: 8rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  border: 1px solid darkgray;
+  background-color: lightgray;
+  margin: auto;
+  margin-top: 1rem;
+  align-self: center;
 }
