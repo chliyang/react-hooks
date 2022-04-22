@@ -30,8 +30,8 @@ const judgeRow = (currentChessMatrix) => {
       currentChessMatrix[i][1] === currentChessMatrix[i][2] &&
       currentChessMatrix[i][0] !== 0
     ) {
-      if (currentChessMatrix[i][0] === "X") return "Congratulations, X wins.";
-      if (currentChessMatrix[i][0] === "O") return "Congratulations, O wins.";
+      if (currentChessMatrix[i][0] === "X") return "Congratulations, X wins!";
+      if (currentChessMatrix[i][0] === "O") return "Congratulations, O wins!";
     }
   }
 };
@@ -43,8 +43,8 @@ const judgeColumn = (currentChessMatrix) => {
       currentChessMatrix[1][i] === currentChessMatrix[2][i] &&
       currentChessMatrix[0][i] !== 0
     ) {
-      if (currentChessMatrix[0][i] === "X") return "Congratulations, X wins.";
-      if (currentChessMatrix[0][i] === "O") return "Congratulations, O wins.";
+      if (currentChessMatrix[0][i] === "X") return "Congratulations, X wins!";
+      if (currentChessMatrix[0][i] === "O") return "Congratulations, O wins!";
     }
   }
 };
@@ -55,8 +55,8 @@ const judgeDiagonal1 = (currentChessMatrix) => {
     currentChessMatrix[1][1] === currentChessMatrix[2][2] &&
     currentChessMatrix[0][0] !== 0
   ) {
-    if (currentChessMatrix[0][0] === "X") return "Congratulations, X wins.";
-    if (currentChessMatrix[0][0] === "O") return "Congratulations, O wins.";
+    if (currentChessMatrix[0][0] === "X") return "Congratulations, X wins!";
+    if (currentChessMatrix[0][0] === "O") return "Congratulations, O wins!";
   }
 };
 
@@ -66,13 +66,12 @@ const judgeDiagonal2 = (currentChessMatrix) => {
     currentChessMatrix[2][0] === currentChessMatrix[1][1] &&
     currentChessMatrix[0][2] !== 0
   ) {
-    if (currentChessMatrix[0][2] === "X") return "Congratulations, X wins.";
-    if (currentChessMatrix[0][2] === "O") return "Congratulations, O wins.";
+    if (currentChessMatrix[0][2] === "X") return "Congratulations, X wins!";
+    if (currentChessMatrix[0][2] === "O") return "Congratulations, O wins!";
   }
 };
 
 const judgeTie = (currentChessMatrix) => {
-  console.log(currentChessMatrix);
   if (!currentChessMatrix.includes("")) return "The game ends as a tie.";
 };
 

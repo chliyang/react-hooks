@@ -22,15 +22,22 @@ body {
   text-align: center;
 }
 
-.next_one {
-  text-align: center;
-  padding-top: 1rem;
+.next {
+  margin-top: 20px;
 }
 
 .judgement {
+  margin-top: 20px;
+}
+
+.record {
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+  padding-top: 10px;
+}
+
+#x_wins,
+#o_wins {
+  font-size: 2rem;
 }
 
 .chessboard {
