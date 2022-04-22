@@ -7,13 +7,15 @@ const TicTacToe = () => {
   const [chessState, setChessState] = useState(initialChessState);
 
   const handleClick = (index) => {
-    const xORo = currentChess === "X" ? "O" : "X";
-    setCurrentChess(xORo);
-    setChessState((preValue) => {
-      const arr = [...preValue];
-      arr[index] = xORo;
-      return arr;
-    });
+    if (chessState[index] === "") {
+      const xORo = currentChess === "X" ? "O" : "X";
+      setCurrentChess(xORo);
+      setChessState((preValue) => {
+        const arr = [...preValue];
+        arr[index] = xORo;
+        return arr;
+      });
+    }
   };
 
   const resetChess = () => {
