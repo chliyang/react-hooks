@@ -1,3 +1,11 @@
+import {
+  CHESS_O,
+  CHESS_X,
+  WIN_MESSAGE_X,
+  WIN_MESSAGE_O,
+  WIN_MESSAGE_TIE,
+} from "../constant/chess-constant";
+
 const adjudication = (currentChessState) => {
   const chessMatrix = getChessMatrix(currentChessState);
   if (judgeRow(chessMatrix)) return judgeRow(chessMatrix);
@@ -30,8 +38,8 @@ const judgeRow = (currentChessMatrix) => {
       currentChessMatrix[i][1] === currentChessMatrix[i][2] &&
       currentChessMatrix[i][0] !== 0
     ) {
-      if (currentChessMatrix[i][0] === "X") return "Congratulations, X wins!";
-      if (currentChessMatrix[i][0] === "O") return "Congratulations, O wins!";
+      if (currentChessMatrix[i][0] === CHESS_X) return WIN_MESSAGE_X;
+      if (currentChessMatrix[i][0] === CHESS_O) return WIN_MESSAGE_O;
     }
   }
 };
@@ -43,8 +51,8 @@ const judgeColumn = (currentChessMatrix) => {
       currentChessMatrix[1][i] === currentChessMatrix[2][i] &&
       currentChessMatrix[0][i] !== 0
     ) {
-      if (currentChessMatrix[0][i] === "X") return "Congratulations, X wins!";
-      if (currentChessMatrix[0][i] === "O") return "Congratulations, O wins!";
+      if (currentChessMatrix[0][i] === CHESS_X) return WIN_MESSAGE_X;
+      if (currentChessMatrix[0][i] === CHESS_O) return WIN_MESSAGE_O;
     }
   }
 };
@@ -55,8 +63,8 @@ const judgeDiagonal1 = (currentChessMatrix) => {
     currentChessMatrix[1][1] === currentChessMatrix[2][2] &&
     currentChessMatrix[0][0] !== 0
   ) {
-    if (currentChessMatrix[0][0] === "X") return "Congratulations, X wins!";
-    if (currentChessMatrix[0][0] === "O") return "Congratulations, O wins!";
+    if (currentChessMatrix[0][0] === CHESS_X) return WIN_MESSAGE_X;
+    if (currentChessMatrix[0][0] === CHESS_O) return WIN_MESSAGE_O;
   }
 };
 
@@ -66,13 +74,13 @@ const judgeDiagonal2 = (currentChessMatrix) => {
     currentChessMatrix[2][0] === currentChessMatrix[1][1] &&
     currentChessMatrix[0][2] !== 0
   ) {
-    if (currentChessMatrix[0][2] === "X") return "Congratulations, X wins!";
-    if (currentChessMatrix[0][2] === "O") return "Congratulations, O wins!";
+    if (currentChessMatrix[0][2] === CHESS_X) return WIN_MESSAGE_X;
+    if (currentChessMatrix[0][2] === CHESS_O) return WIN_MESSAGE_O;
   }
 };
 
 const judgeTie = (currentChessMatrix) => {
-  if (!currentChessMatrix.includes("")) return "The game ends as a tie.";
+  if (!currentChessMatrix.includes("")) return WIN_MESSAGE_TIE;
 };
 
 export default adjudication;

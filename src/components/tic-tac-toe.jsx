@@ -1,43 +1,9 @@
-import { useEffect, useState } from "react";
-import adjudication from "../utils/adjudication";
-
-const initialChessState = ["", "", "", "", "", "", "", "", ""];
+import useTicTacToe from "./hooks/use-tic-tac-toe";
+import { CHESS_X, CHESS_O } from "../constant/chess-constant";
 
 const TicTacToe = () => {
-  const [currentChess, setCurrentChess] = useState("O");
-  const [chessState, setChessState] = useState(initialChessState);
-  const [winner, setWinner] = useState();
-  const [record, setRecord] = useState({ X: 0, O: 0 });
-
-  useEffect(() => {
-    setWinner(adjudication(chessState));
-  }, [chessState]);
-
-  useEffect(() => {
-    if (winner !== undefined)
-      currentChess === "X"
-        ? setRecord((preValue) => ({ ...record, X: preValue.X + 1 }))
-        : setRecord((preValue) => ({ ...record, O: preValue.O + 1 }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [winner]);
-
-  const handleClick = (index) => {
-    if (chessState[index] === "" && winner === undefined) {
-      const xORo = currentChess === "X" ? "O" : "X";
-      setCurrentChess(xORo);
-      setChessState((preValue) => {
-        const arr = [...preValue];
-        arr[index] = xORo;
-        return arr;
-      });
-    }
-  };
-
-  const resetChess = () => {
-    setCurrentChess("O");
-    setWinner(undefined);
-    setChessState(initialChessState);
-  };
+  const { currentChess, chessState, winner, record, handleClick, resetChess } =
+    useTicTacToe();
 
   const renderChessBoard = () => {
     const result = [];
@@ -54,7 +20,7 @@ const TicTacToe = () => {
   return (
     <main className="center">
       <section className="next">
-        Next round: {currentChess === "X" ? "O" : "X"}
+        Next round: {currentChess === CHESS_X ? CHESS_O : CHESS_X}
       </section>
 
       <section className="judgement">
